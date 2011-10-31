@@ -1,0 +1,11 @@
+
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=NTP Monitor
+Comment=A NTP Monitor Application
+Exec=ntpg
+Icon=network-transmit.png
+Terminal=false
+
+Name[en_US]=ntpg.desktop
