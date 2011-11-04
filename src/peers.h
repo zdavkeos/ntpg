@@ -32,6 +32,11 @@ class Legend : public Gtk::Dialog
     
     KeyVal pps;
     KeyVal pre;
+    KeyVal pft;
+    KeyVal pex;
+    KeyVal pol;
+    KeyVal pca;
+    KeyVal pse;
 };
 
 class Peer

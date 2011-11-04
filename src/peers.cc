@@ -199,8 +199,13 @@ Legend::Legend()
     flds_lbl.set_text("Fields");
 
     pps.set("'o' - ", "PPS");
-    pre.set("'*' - ", "Synced peer");
-
+    pre.set("'*' - ", "System peer");
+    pft.set("'X' - ", "Falseticker");
+    pex.set("'.' - ", "Excess");
+    pol.set("'-' - ", "Outlier");
+    pca.set("'+' - ", "Candidate");
+    pse.set("'#' - ", "Selected");
+    
     // pack it all together
     tbl.attach(leg_lbl, 0, 5, 0, 1, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 10, 10);
     tbl.attach(hsep, 0, 5, 1, 2, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
@@ -210,6 +215,11 @@ Legend::Legend()
 
     tbl.attach(pps, 0, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
     tbl.attach(pre, 0, 2, 4, 5, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    tbl.attach(pft, 0, 2, 5, 6, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    tbl.attach(pex, 0, 2, 6, 7, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    tbl.attach(pol, 0, 2, 7, 8, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    tbl.attach(pca, 0, 2, 8, 9, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    tbl.attach(pse, 0, 2, 9, 10,Gtk::SHRINK, Gtk::SHRINK, 3, 3);
 
     vbox->pack_start(tbl);
     vbox->show_all();
