@@ -10,8 +10,12 @@ Ntpg only monitors the local machine, and the relevant
 executable must me in the PATH.
 
 Installing -
-	To build and run ntpg you will need: 
-	ntpd gtkmm2-devel libgtop2-devel
+	To build and run ntpg you will need:
+    
+    Fedora:
+    	ntpd gtkmm2-devel libgtop2-devel
+    Ubuntu:
+        ntp libgtkmm-2.4-dev libgtop2-dev
 
 	Once you have the sources, run:
 	./configure
