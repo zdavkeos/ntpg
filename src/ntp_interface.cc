@@ -76,7 +76,7 @@ gboolean ntpd_interface::ntpd_get_version(Glib::ustring &ver)
     std::string stdout;
     std::string stderr;
     int spawn_ret;
-    guint retval;
+    size_t retval;
 
     try {
         Glib::spawn_command_line_sync("ntpd -!", &stdout, &stderr, &spawn_ret);
@@ -95,7 +95,9 @@ gboolean ntpd_interface::ntpd_get_version(Glib::ustring &ver)
         return TRUE;
     }
 
-    return FALSE;
+    // we didn't get a version, but its not a show stopper
+    ver = "Unknown";
+    return TRUE;
 }
 
 gint ntpd_interface::ntpd_get_pid()
@@ -125,7 +127,7 @@ gint ntpd_interface::ntpd_get_location(Glib::ustring &path)
     std::string stdout;
     std::string stderr;
     int spawn_ret;
-    guint retval;
+    size_t retval;
 
     try {
         Glib::spawn_command_line_sync("whereis -b ntpd", &stdout, &stderr, &spawn_ret);
