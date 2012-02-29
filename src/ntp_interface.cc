@@ -40,22 +40,32 @@ gint ntpd_interface::get_peers_list(std::vector<std::string> &pl)
 {
     std::string stdout;
     std::string stderr;
+    std::string cmd = "ntpq -p";
     int retval;
 
     pl.clear();
 
-    if(app_config.use_dns) {
-        Glib::spawn_command_line_sync("ntpq -p", &stdout, &stderr, &retval);
-        // Glib::spawn_async_with_pipes
-        // Glib::signal_child_watch().connect(sigc::ptr_fun(&child_watch_handler), pid);
-    } else {
-        Glib::spawn_command_line_sync("ntpq -pn", &stdout, &stderr, &retval);
+    if(!app_config.use_dns) {
+        cmd += " -n";
     }
-    
+
+    if(!app_config.use_local) {
+        cmd += " " + app_config.remote_host;
+    }
+
+    // Glib::spawn_async_with_pipes
+    // Glib::signal_child_watch().connect(sigc::ptr_fun(&child_watch_handler), pid);
+    Glib::spawn_command_line_sync(cmd, &stdout, &stderr, &retval);
+
+    // quick sanity check
+    if(std::string::npos != stderr.find("timed out", 0)) {
+        return -1;
+    }
+
     // split the string into lines
     std::stringstream ss(stdout);
     ss << '\n'; // ntpq doesn't add a last newline...
-    
+
     while(ss.good()) {
         std::string s;
         getline(ss, s, '\n');

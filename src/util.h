@@ -24,6 +24,8 @@ typedef struct ntpg_config
     bool          use_dns;
     Glib::ustring editor;
     Glib::ustring default_conf_file;
+    bool          use_local;
+    Glib::ustring remote_host;
     
 } ntpg_config;
 

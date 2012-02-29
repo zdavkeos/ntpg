@@ -52,6 +52,8 @@ void set_default_config()
     app_config.use_dns   = false;
     app_config.editor    = "gedit";
     app_config.default_conf_file = "/etc/ntp.conf";
+    app_config.use_local = true;
+    app_config.remote_host = "";
 }
 
 std::string trim_wsp(std::string &s)

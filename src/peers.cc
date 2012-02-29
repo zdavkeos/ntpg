@@ -61,6 +61,7 @@ void ntpg_peers::update()
 
 void ntpg_peers::update_worker()
 {
+    gint result;
     Glib::Mutex::Lock lock(upd_mtx);
 
     std::vector<std::string> plist;
@@ -71,11 +72,19 @@ void ntpg_peers::update_worker()
     progress.set_text("Polling ntpd...");
 
     progress.pulse();
-    ntpd_interface::get_peers_list(plist);
+    result = ntpd_interface::get_peers_list(plist);
     progress.pulse();
 
     progress.set_fraction(0.9);
     list->clear();
+
+    if(0 != result) {
+        // something went wrong...
+        progress.set_fraction(1.0);
+        progress.set_text("Error");
+        return;
+    }
+
     for(it = plist.begin(); it != plist.end(); it++)
     {
         Peer p;
@@ -134,7 +143,11 @@ ntpg_peers::ntpg_peers()
     update(); // load the first set of data
     tview.columns_autosize();
 
-    lbl.set_text("Peers List");
+    // indicate if we are looking at local machine or not
+    std::string header = "Peers List: ";
+    header += app_config.use_local ? "localhost" : app_config.remote_host;
+
+    lbl.set_text(header);
     sw.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
     // progress.set_show_text(true);
     pollb.set_label("Poll");

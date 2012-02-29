@@ -151,6 +151,11 @@ ntpg_config_ui::ntpg_config_ui()
     conf_lbl.set_text("NTP Config File");
     conf_entry = new Gtk::Entry();
     conf_entry->set_text(app_config.default_conf_file);
+    use_local_btn = new Gtk::CheckButton("Use local daemon");
+    use_local_btn->set_active(app_config.use_local);
+    remote_lbl.set_text("Remote host");
+    remote_entry = new Gtk::Entry();
+    remote_entry->set_text(app_config.remote_host);
     
 
     props.attach(*use_dns_btn, 0, 1, 0, 1, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
@@ -160,6 +165,10 @@ ntpg_config_ui::ntpg_config_ui()
     props.attach(*editor_entry, 1, 2, 2, 3, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
     props.attach(conf_lbl, 0, 1, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
     props.attach(*conf_entry, 1, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
+
+    props.attach(*use_local_btn, 0, 1, 4, 5, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
+    props.attach(remote_lbl, 0, 1, 5, 6, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
+    props.attach(*remote_entry, 1, 2, 5, 6, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
 
     // book.append_page("Font", fcw);
     book.append_page(props, "Properties");
@@ -180,6 +189,8 @@ void ntpg_config_ui::apply_cb()
     app_config.file_font = font_chooser->get_font_name();
     app_config.editor = editor_entry->get_text();
     app_config.default_conf_file = conf_entry->get_text();
+    app_config.use_local = use_local_btn->get_active();
+    app_config.remote_host = remote_entry->get_text();
 }
 
 void ntpg_config_ui::do_run()

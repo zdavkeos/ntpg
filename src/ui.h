@@ -42,6 +42,9 @@ class ntpg_config_ui : public Gtk::Dialog
     Gtk::Label editor_lbl;
     Gtk::Entry *conf_entry;
     Gtk::Label conf_lbl;
+    Gtk::CheckButton *use_local_btn;
+    Gtk::Entry *remote_entry;
+    Gtk::Label remote_lbl;
 
     void apply_cb(void);
     void cancle_cb(void) { hide(); }
