@@ -207,6 +207,9 @@ gint ntpd_interface::ntpd_get_start_time(guint ppid, Glib::ustring &start)
 
     glibtop_get_proc_time(&ptime, ppid);
     start = ctime((time_t*)&ptime.start_time);
+    
+    // ctime adds a newline that gets in the way
+    start.erase(start.length() - 1);
 
     return true;
 }

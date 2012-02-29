@@ -165,7 +165,6 @@ ntpg_config_ui::ntpg_config_ui()
     props.attach(*editor_entry, 1, 2, 2, 3, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
     props.attach(conf_lbl, 0, 1, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
     props.attach(*conf_entry, 1, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
-
     props.attach(*use_local_btn, 0, 1, 4, 5, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
     props.attach(remote_lbl, 0, 1, 5, 6, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
     props.attach(*remote_entry, 1, 2, 5, 6, Gtk::SHRINK, Gtk::SHRINK, 5, 5);

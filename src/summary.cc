@@ -52,18 +52,18 @@ ntpg_summary::ntpg_summary()
 
     
     // build brief summary pane
-    brief->attach(ver_lbl, 0, 1, 0, 1, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(ver_ver_lbl, 1, 2, 0, 1, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(pid_lbl, 0, 1, 1, 2, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(pid_pid_lbl, 1, 2, 1, 2, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(path_lbl, 0, 1, 2, 3, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(path_path_lbl, 1, 2, 2, 3, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(cmdline_lbl, 0, 1, 3, 4, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(cmdline_cmdline_lbl, 1, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(uptime_lbl, 0, 1, 4, 5, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(uptime_uptime_lbl, 1, 2, 4, 5, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(start_lbl, 0, 1, 5, 6, Gtk::SHRINK, Gtk::SHRINK);
-    brief->attach(start_start_lbl, 1, 2, 5, 6, Gtk::SHRINK, Gtk::SHRINK);
+    brief->attach(ver_lbl, 0, 1, 0, 1, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(ver_ver_lbl, 1, 2, 0, 1, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(pid_lbl, 0, 1, 1, 2, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(pid_pid_lbl, 1, 2, 1, 2, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(path_lbl, 0, 1, 2, 3, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(path_path_lbl, 1, 2, 2, 3, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(cmdline_lbl, 0, 1, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(cmdline_cmdline_lbl, 1, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(uptime_lbl, 0, 1, 4, 5, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(uptime_uptime_lbl, 1, 2, 4, 5, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(start_lbl, 0, 1, 5, 6, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->attach(start_start_lbl, 1, 2, 5, 6, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
 
 
     // pack everything together
