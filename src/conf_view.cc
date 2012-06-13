@@ -19,8 +19,8 @@ ntpg_ConfView::ntpg_ConfView()
     set_border_width(10);
     sv.set_editable(false);
     Pango::FontDescription fdesc(app_config.file_font);
-    sv.modify_font(fdesc);
-    // sv.override_font(fdesc); // gtkmm3.0
+    // sv.modify_font(fdesc); // gtkmm2
+    sv.override_font(fdesc); // gtkmm3
 
     tbuff_ref = sv.get_buffer();
     comment_tag = tbuff_ref->create_tag("comment");
@@ -66,7 +66,8 @@ void ntpg_ConfView::do_reload_conf()
     ntp_conf_file = app_config.default_conf_file;
     editor = app_config.editor;
     Pango::FontDescription fdesc(app_config.file_font);
-    sv.modify_font(fdesc);
+    // sv.modify_font(fdesc); // gtkmm2
+    sv.override_font(fdesc); // gtkmm3
 }
 
 void ntpg_ConfView::reload_file(void)

@@ -56,13 +56,14 @@ void ntpg_Stats::save_cb(void)
     gint response;
     std::string fname;
     Gtk::FileChooserDialog chooser("Save graph to PNG file", Gtk::FILE_CHOOSER_ACTION_SAVE);
-    Gtk::FileFilter png_filt;;
+    Glib::RefPtr<Gtk::FileFilter> png_filt;
     
+    png_filt = Gtk::FileFilter::create();
     chooser.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
     chooser.add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_ACCEPT);
-    png_filt.set_name("PNG Files");
-    png_filt.add_mime_type("image/png");
-    png_filt.add_pattern("*.png");
+    png_filt->set_name("PNG Files");
+    png_filt->add_mime_type("image/png");
+    png_filt->add_pattern("*.png");
     chooser.set_filter(png_filt);
 
     response = chooser.run();

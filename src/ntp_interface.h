@@ -25,7 +25,6 @@ class ntpd_interface
     static gint ntpd_get_nice(guint ppid, Glib::ustring &nice);
     static gint ntpd_get_start_time(guint ppid, Glib::ustring &);
     static gint ntpd_get_up_time(guint ppid, Glib::ustring &);
-
 };
 
 #endif
