@@ -1,21 +1,21 @@
-ntpg - A simple GTK+ application to view NTP status
+ntpg - A simple GTK+ application to view NTP daemon status
 
-Author: Zach Davis zdavkeos -at- gmail.com
 License: GLPv3 - See gpl-3.0.txt
 
 About - 
 	Ntpg is loosely based on Meinberg's excellent
 ntp monitoring program that is, unfortunatly, Windows only.
-Ntpg only monitors the local machine, and the relevant 
-executable must me in the PATH.
+
+Ntpg parses status data from ntpq and displays it in a nice gui. The
+ntp* binaries must me in PATH.
 
 Installing -
-	To build and run ntpg you will need:
+	To build and run ntpg you will need gtkmm3 and libgtop:
     
     Fedora:
-    	ntpd gtkmm2-devel libgtop2-devel
+    	ntpd gtkmm3-devel libgtop2-devel
     Ubuntu:
-        ntp libgtkmm-2.4-dev libgtop2-dev
+        ntp libgtkmm-3.0-dev libgtop2-dev
 
 	Once you have the sources, run:
 	./configure
