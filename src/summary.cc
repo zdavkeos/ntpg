@@ -14,8 +14,13 @@ ntpg_summary::ntpg_summary()
 {
     Name = "Summary";
     Title = "Summary of ntpd state";
+
     // create any pointers to widgets
-    brief = new Gtk::Table(5, 2, TRUE);
+    brief = new Gtk::Grid();
+
+    // grid settings
+    brief->set_column_homogeneous(true);
+    brief->set_column_spacing(10);
 
     // set static labels
     top_lbl.set_text("NTP Daemon Summary");
@@ -36,37 +41,41 @@ ntpg_summary::ntpg_summary()
     uptime_uptime_lbl.set_text(uptime_string);
 
     // set label justification...
-    ver_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-    ver_ver_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-    pid_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-    pid_pid_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-    path_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-    path_path_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-    cmdline_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-    cmdline_cmdline_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-
-    uptime_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-    uptime_uptime_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-    start_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
-    start_start_lbl.set_justify(Gtk::JUSTIFY_RIGHT);
+    ver_lbl.set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_CENTER);
+    ver_ver_lbl.set_alignment(Gtk::ALIGN_START);
+    pid_lbl.set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_CENTER);
+    pid_pid_lbl.set_alignment(Gtk::ALIGN_START);
+    path_lbl.set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_CENTER);
+    path_path_lbl.set_alignment(Gtk::ALIGN_START);
+    cmdline_lbl.set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_CENTER);
+    cmdline_cmdline_lbl.set_alignment(Gtk::ALIGN_START);
+    uptime_lbl.set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_CENTER);
+    uptime_uptime_lbl.set_alignment(Gtk::ALIGN_START);
+    start_lbl.set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_CENTER);
+    start_start_lbl.set_alignment(Gtk::ALIGN_START);
 
     
     // build brief summary pane
-    brief->attach(ver_lbl, 0, 1, 0, 1, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(ver_ver_lbl, 1, 2, 0, 1, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(pid_lbl, 0, 1, 1, 2, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(pid_pid_lbl, 1, 2, 1, 2, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(path_lbl, 0, 1, 2, 3, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(path_path_lbl, 1, 2, 2, 3, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(cmdline_lbl, 0, 1, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(cmdline_cmdline_lbl, 1, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(uptime_lbl, 0, 1, 4, 5, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(uptime_uptime_lbl, 1, 2, 4, 5, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(start_lbl, 0, 1, 5, 6, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    brief->attach(start_start_lbl, 1, 2, 5, 6, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    brief->add(ver_lbl);
+    brief->attach_next_to(ver_ver_lbl, ver_lbl, Gtk::POS_RIGHT, 1, 1);
+
+    brief->attach_next_to(pid_lbl, ver_lbl, Gtk::POS_BOTTOM, 1, 1);
+    brief->attach_next_to(pid_pid_lbl, pid_lbl, Gtk::POS_RIGHT, 1, 1);
+
+    brief->attach_next_to(path_lbl, pid_lbl, Gtk::POS_BOTTOM, 1, 1);
+    brief->attach_next_to(path_path_lbl, path_lbl, Gtk::POS_RIGHT, 1, 1);
+
+    brief->attach_next_to(cmdline_lbl, path_lbl, Gtk::POS_BOTTOM, 1, 1);
+    brief->attach_next_to(cmdline_cmdline_lbl, cmdline_lbl, Gtk::POS_RIGHT, 1, 1);
+
+    brief->attach_next_to(uptime_lbl, cmdline_lbl, Gtk::POS_BOTTOM, 1, 1);
+    brief->attach_next_to(uptime_uptime_lbl, uptime_lbl, Gtk::POS_RIGHT, 1, 1);
+
+    brief->attach_next_to(start_lbl, uptime_lbl, Gtk::POS_BOTTOM, 1, 1);
+    brief->attach_next_to(start_start_lbl, start_lbl, Gtk::POS_RIGHT, 1, 1);
 
 
-    // pack everything together
+    // pack everything else together
     attach(top_lbl, 0, 2, 0, 1, Gtk::EXPAND | Gtk::FILL, Gtk::SHRINK, 10, 10);
     attach(sep, 0, 2, 1, 2, Gtk::EXPAND | Gtk::FILL, Gtk::SHRINK, 3, 3);
     attach(*brief, 0, 2, 2, 3, Gtk::SHRINK, Gtk::EXPAND | Gtk::FILL, 10, 10);

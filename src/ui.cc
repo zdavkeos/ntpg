@@ -17,7 +17,6 @@ ntpg_main::ntpg_main()
 {
     set_title("Gtk NTP monitor");
     set_default_size(850, 400);
-    set_default_config(); // apply default settings
     conf_dlg = NULL;
 
     add(main_vbox);

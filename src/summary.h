@@ -26,7 +26,7 @@ class ntpg_summary : public ntpg_page
 
   private:
     Gtk::Label top_lbl;
-    Gtk::Table *brief;
+    Gtk::Grid *brief;
     Gtk::Label ver_lbl;
     Gtk::Label ver_ver_lbl;
     Gtk::Label pid_lbl;

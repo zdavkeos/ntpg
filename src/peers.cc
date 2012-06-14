@@ -155,12 +155,21 @@ ntpg_peers::ntpg_peers()
                                                  &ntpg_peers::update));
     
     sw.add(tview);
-    attach(lbl, 0, 3, 0, 1, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 10, 10);
-    attach(sep, 0, 3, 1, 2, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
-    attach(sw, 0, 3, 2, 3);
-    attach(pollb, 1, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
-    attach(leg_butt, 0, 1, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
-    attach(progress, 2, 3, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
+
+    add(lbl);
+    attach_next_to(sep, lbl, Gtk::POS_BOTTOM, 2, 1);
+    attach_next_to(sw, sep, Gtk::POS_BOTTOM, 2, 1);
+    attach_next_to(leg_butt, sw, Gtk::POS_BOTTOM, 1, 1);
+    attach_next_to(pollb, leg_butt, Gtk::POS_RIGHT, 1, 1);
+    attach_next_to(progress, pollb, Gtk::POS_RIGHT, 1, 1);
+
+
+    // attach(lbl, 0, 3, 0, 1, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 10, 10);
+    // attach(sep, 0, 3, 1, 2, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
+    // attach(sw, 0, 3, 2, 3);
+    // attach(pollb, 1, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
+    // attach(leg_butt, 0, 1, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
+    // attach(progress, 2, 3, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 5, 5);
 
 }
 

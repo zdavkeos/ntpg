@@ -55,7 +55,7 @@ am_ntpg_OBJECTS = main.$(OBJEXT) ui.$(OBJEXT) peers.$(OBJEXT) \
 	statistics.$(OBJEXT) parse.$(OBJEXT) util.$(OBJEXT)
 ntpg_OBJECTS = $(am_ntpg_OBJECTS)
 am__DEPENDENCIES_1 =
-ntpg_DEPENDENCIES = $(am__DEPENDENCIES_1)
+ntpg_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -155,6 +155,8 @@ datarootdir = @datarootdir@
 docdir = @docdir@
 dvidir = @dvidir@
 exec_prefix = @exec_prefix@
+glibtop_CFLAGS = @glibtop_CFLAGS@
+glibtop_LIBS = @glibtop_LIBS@
 gtkmm_CFLAGS = @gtkmm_CFLAGS@
 gtkmm_LIBS = @gtkmm_LIBS@
 host_alias = @host_alias@

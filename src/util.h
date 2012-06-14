@@ -38,7 +38,7 @@ void set_default_config();
  * ntpg_page - All 'tab' widgets inherit from this class
  * 
  */
-class ntpg_page : public Gtk::Table
+class ntpg_page : public Gtk::Grid
 {
   protected:
     Gtk::Label title_lbl;

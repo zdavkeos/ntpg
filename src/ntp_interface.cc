@@ -16,12 +16,10 @@
 #include <iterator>
 #include <time.h>
 
-#if 0
 #include <glibtop.h>
 #include <glibtop/procargs.h>
 #include <glibtop/proctime.h>
 #include <glibtop/procuid.h>
-#endif
 
 #include "ntp_interface.h"
 #include "util.h"
@@ -168,20 +166,16 @@ gint ntpd_interface::ntpd_get_location(Glib::ustring &path)
 
 gint ntpd_interface::ntpd_get_cmdline(guint ppid, Glib::ustring &cmdline)
 {
-#if 0
     glibtop_proc_args args;
 
-    cmdline = glibtop_get_proc_args(&args, ppid, 1024);
+    // cmdline = glibtop_get_proc_args(&args, ppid, 1024); // crashy?
+    cmdline = "none";
 
     return true;
-
-#endif
-    return false;
 }
 
 gint ntpd_interface::ntpd_get_nice(guint ppid, Glib::ustring &nice)
 {
-#if 0
     glibtop_proc_uid puid;
     std::stringstream ss;
 
@@ -191,13 +185,10 @@ gint ntpd_interface::ntpd_get_nice(guint ppid, Glib::ustring &nice)
     nice = ss.str();
 
     return true;
-#endif
-    return false;
 }
 
 gint ntpd_interface::ntpd_get_start_time(guint ppid, Glib::ustring &start)
 {
-#if 0
     glibtop_proc_time ptime;
 
     glibtop_get_proc_time(&ptime, ppid);
@@ -207,13 +198,10 @@ gint ntpd_interface::ntpd_get_start_time(guint ppid, Glib::ustring &start)
     start.erase(start.length() - 1);
 
     return true;
-#endif
-    return false;
 }
 
 gint ntpd_interface::ntpd_get_up_time(guint ppid, Glib::ustring &start)
 {
-#if 0
     glibtop_proc_time ptime;
     std::stringstream ss;
 
@@ -224,6 +212,4 @@ gint ntpd_interface::ntpd_get_up_time(guint ppid, Glib::ustring &start)
 
     return true;
 
-#endif
-    return false;
 }
