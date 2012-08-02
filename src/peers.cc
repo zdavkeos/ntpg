@@ -116,6 +116,7 @@ void ntpg_peers::update_worker()
 }
 
 ntpg_peers::ntpg_peers()
+    : ntpg_page()
 {
     Name = "Peers";
     Title = "List of NTP peers";
@@ -139,6 +140,9 @@ ntpg_peers::ntpg_peers()
     tview.append_column_numeric("Delay", peercols.m_delay, "%03.03f");
     tview.append_column_numeric("Offset", peercols.m_offset, "%03.03f");
     tview.append_column_numeric("Jitter", peercols.m_jitter, "%03.03f");
+
+    tview.set_hexpand(TRUE);
+    tview.set_vexpand(TRUE);
 
     update(); // load the first set of data
     tview.columns_autosize();

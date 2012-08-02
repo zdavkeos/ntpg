@@ -44,6 +44,17 @@ class ntpg_page : public Gtk::Grid
     Gtk::Label title_lbl;
     Gtk::VSeparator vsep;
 
+    ntpg_page()
+    {
+        set_vexpand(TRUE);
+        set_hexpand(TRUE);
+        set_halign(Gtk::ALIGN_FILL);
+        set_valign(Gtk::ALIGN_FILL);
+
+        set_row_spacing(5);
+        set_column_spacing(5);
+    }
+
   public:
     Glib::ustring Name;
     Glib::ustring Title;
@@ -52,7 +63,7 @@ class ntpg_page : public Gtk::Grid
 };
 
 
-class KeyVal : public Gtk::Table
+class KeyVal : public Gtk::Grid
 {
   public:
     KeyVal();
@@ -66,7 +77,7 @@ class KeyVal : public Gtk::Table
     Gtk::Label val;
 };
 
-class KeyValTable : public Gtk::Table
+class KeyValTable : public Gtk::Grid
 {
   public:
     KeyValTable();

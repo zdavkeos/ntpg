@@ -13,19 +13,19 @@
 #include "util.h"
 
 KeyVal::KeyVal()
-    : Gtk::Table(1, 2, true)
+    : Gtk::Grid()
 {
     key.set_alignment(1.0, 0.5);
     val.set_alignment(1.0, 0.5);
 
-    attach(key, 0, 1, 0, 1);
-    attach(val, 1, 2, 0, 1);
+    attach(key, 0, 0, 1, 1);
+    attach(val, 1, 0, 1, 1);
 }
 
 KeyVal::KeyVal(Glib::ustring k, Glib::ustring v)
 {
-    attach(key, 0, 1, 0, 1);
-    attach(val, 1, 2, 0, 1);
+    attach(key, 0, 0, 1, 1);
+    attach(val, 1, 0, 1, 1);
 
     key.set_label(k);
     val.set_label(v);
@@ -38,7 +38,7 @@ void KeyVal::set(Glib::ustring k, Glib::ustring v)
 }
 
 KeyValTable::KeyValTable()
-    : Gtk::Table(1, 2, true)
+    : Gtk::Grid()
 {
     
 }

@@ -13,6 +13,7 @@
 #include <iostream>
 
 ntpg_ConfView::ntpg_ConfView()
+    : ntpg_page()
 {
     Name = "Configuration";
     Title = "NTP Configuration File Viewer";
@@ -37,7 +38,9 @@ ntpg_ConfView::ntpg_ConfView()
     cb_reload(); // get the file contents
 
     lbl.set_text("NTP Configuration File: " + ntp_conf_file);
-    sw.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+    sw.set_hexpand(TRUE);
+    sw.set_vexpand(TRUE);
+
     edit_button = new Gtk::Button(Gtk::Stock::EDIT);
     reload_button = new Gtk::Button(Gtk::Stock::REFRESH);
     
@@ -48,11 +51,11 @@ ntpg_ConfView::ntpg_ConfView()
     
     // pack everything together
     sw.add(sv);
-    attach(lbl, 0, 2, 0, 1, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 10, 10);
-    attach(sep, 0, 2, 1, 2, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
-    attach(sw, 0, 2, 2, 3);
-    attach(*edit_button, 0, 1, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
-    attach(*reload_button, 0, 2, 3, 4, Gtk::SHRINK, Gtk::SHRINK, 3, 3);
+    add(lbl);
+    attach_next_to(sep, lbl, Gtk::POS_BOTTOM, 2, 1);
+    attach_next_to(sw, sep, Gtk::POS_BOTTOM, 2, 1);
+    attach_next_to(*edit_button, sw, Gtk::POS_BOTTOM, 1, 1);
+    attach_next_to(*reload_button, *edit_button, Gtk::POS_RIGHT, 1, 1);
 }
 
 ntpg_ConfView::~ntpg_ConfView()

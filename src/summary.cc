@@ -10,7 +10,8 @@
 
 #include "summary.h"
 
-ntpg_summary::ntpg_summary()
+ntpg_summary::ntpg_summary() 
+    : ntpg_page()
 {
     Name = "Summary";
     Title = "Summary of ntpd state";
@@ -54,7 +55,7 @@ ntpg_summary::ntpg_summary()
     start_lbl.set_alignment(Gtk::ALIGN_END, Gtk::ALIGN_CENTER);
     start_start_lbl.set_alignment(Gtk::ALIGN_START);
 
-    
+
     // build brief summary pane
     brief->add(ver_lbl);
     brief->attach_next_to(ver_ver_lbl, ver_lbl, Gtk::POS_RIGHT, 1, 1);
@@ -74,11 +75,13 @@ ntpg_summary::ntpg_summary()
     brief->attach_next_to(start_lbl, uptime_lbl, Gtk::POS_BOTTOM, 1, 1);
     brief->attach_next_to(start_start_lbl, start_lbl, Gtk::POS_RIGHT, 1, 1);
 
+    brief->set_hexpand(TRUE);
+    brief->set_vexpand(TRUE);
 
     // pack everything else together
-    attach(top_lbl, 0, 2, 0, 1, Gtk::EXPAND | Gtk::FILL, Gtk::SHRINK, 10, 10);
-    attach(sep, 0, 2, 1, 2, Gtk::EXPAND | Gtk::FILL, Gtk::SHRINK, 3, 3);
-    attach(*brief, 0, 2, 2, 3, Gtk::SHRINK, Gtk::EXPAND | Gtk::FILL, 10, 10);
+    attach(top_lbl, 0, 0, 1, 1);
+    attach(sep, 0, 1, 1, 1);
+    attach(*brief, 0, 2, 1, 1);
 }
 
 void ntpg_summary::do_reload_conf()

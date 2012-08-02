@@ -34,14 +34,22 @@ ntpg_Stats::ntpg_Stats()
     lbl.set_text("NTP statistics files - " + *ntpd_statsdir);
     stats_lbl.set_text("Graph statistics");
 
-
-    attach(lbl, 0, 2, 0, 1, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 10, 10);
+    add(lbl);
     attach(sep, 0, 2, 1, 2, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
     attach(*file_chooser, 0, 1, 2, 3);
     attach(read_button, 0, 1, 3, 4, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
     attach(save_button, 1, 2, 3, 4, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
     attach(*graph, 1, 2, 2, 3, Gtk::FILL | Gtk::EXPAND, Gtk::FILL | Gtk::EXPAND, 3, 3);
     attach(stats_lbl, 1, 2, 3, 4, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
+
+
+    // attach(lbl, 0, 2, 0, 1, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 10, 10);
+    // attach(sep, 0, 2, 1, 2, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
+    // attach(*file_chooser, 0, 1, 2, 3);
+    // attach(read_button, 0, 1, 3, 4, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
+    // attach(save_button, 1, 2, 3, 4, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
+    // attach(*graph, 1, 2, 2, 3, Gtk::FILL | Gtk::EXPAND, Gtk::FILL | Gtk::EXPAND, 3, 3);
+    // attach(stats_lbl, 1, 2, 3, 4, Gtk::FILL | Gtk::EXPAND, Gtk::SHRINK, 3, 3);
 
     graph->show();
 }
